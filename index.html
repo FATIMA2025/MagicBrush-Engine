@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MagicBrush Engine · AI Drama Production Studio</title>
+<meta name="description" content="18 AI Agents. One sentence in, full drama out. Premium AI-powered drama production engine for Cursor IDE."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#09090b;--surface:#18181b;--card:#1e1e23;--card-hover:#27272a;
+  --text:#fafafa;--muted:#a1a1aa;--dim:#71717a;
+  --accent:#818cf8;--accent2:#a78bfa;--accent3:#6ee7b7;
+  --rose:#fb7185;--amber:#fbbf24;--teal:#2dd4bf;
+  --border:#27272a;--border-light:#3f3f46;
+  --glow:rgba(129,140,248,.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* === NAV === */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);background:rgba(9,9,11,.8);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-weight:800;font-size:1.1rem;letter-spacing:-.02em;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--muted);font-size:.875rem;font-weight:500;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#000;padding:8px 20px;border-radius:8px;font-weight:600;font-size:.85rem;text-decoration:none!important;transition:all .2s}
+.nav-cta:hover{background:var(--accent2);transform:translateY(-1px);text-decoration:none!important}
+
+/* === HERO === */
+.hero{padding:140px 32px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(129,140,248,.15),transparent 70%),radial-gradient(ellipse 60% 40% at 20% 50%,rgba(167,139,250,.08),transparent 60%),radial-gradient(ellipse 50% 35% at 80% 60%,rgba(110,231,183,.06),transparent 50%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);color:var(--accent);padding:6px 16px;border-radius:999px;font-size:.8rem;font-weight:600;margin-bottom:24px;letter-spacing:.02em}
+.hero-badge::before{content:"";width:8px;height:8px;background:var(--accent3);border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:-.04em;margin-bottom:8px}
+.hero h1 .grad{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 40%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.25rem;color:var(--muted);margin:20px auto 0;max-width:600px;font-weight:400}
+.hero-sub-cn{font-size:1rem;color:var(--dim);margin-top:8px}
+.hero-ctas{display:flex;gap:16px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;padding:14px 36px;border-radius:12px;font-weight:700;font-size:1rem;text-decoration:none!important;transition:all .3s;box-shadow:0 4px 24px rgba(129,140,248,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(129,140,248,.4);text-decoration:none!important}
+.btn-secondary{background:transparent;color:var(--text);padding:14px 36px;border-radius:12px;font-weight:600;font-size:1rem;border:1px solid var(--border-light);text-decoration:none!important;transition:all .3s}
+.btn-secondary:hover{border-color:var(--accent);background:rgba(129,140,248,.05);text-decoration:none!important}
+
+/* === STATS === */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);max-width:800px;margin:60px auto 0;border-radius:16px;overflow:hidden}
+.stat{background:var(--surface);padding:28px 20px;text-align:center}
+.stat-num{font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:4px;font-weight:500}
+
+/* === SECTIONS === */
+.section{max-width:1200px;margin:0 auto;padding:100px 32px}
+.section-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:12px}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
+.section-desc{font-size:1.05rem;color:var(--muted);max-width:600px;line-height:1.7}
+
+/* === FEATURE GRID === */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:48px}
+.feature{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .3s}
+.feature:hover{border-color:var(--accent);background:var(--card-hover);transform:translateY(-2px)}
+.feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px}
+.fi-purple{background:rgba(129,140,248,.12);color:var(--accent)}
+.fi-green{background:rgba(110,231,183,.12);color:var(--accent3)}
+.fi-rose{background:rgba(251,113,133,.12);color:var(--rose)}
+.fi-amber{background:rgba(251,191,36,.12);color:var(--amber)}
+.fi-teal{background:rgba(45,212,191,.12);color:var(--teal)}
+.fi-blue{background:rgba(96,165,250,.12);color:#60a5fa}
+.feature h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.feature p{color:var(--muted);font-size:.9rem;line-height:1.6}
+.feature .cn{color:var(--dim);font-size:.8rem;margin-top:8px}
+
+/* === PIPELINE === */
+.pipeline{background:var(--surface);border-radius:20px;padding:48px;margin-top:48px;border:1px solid var(--border);overflow-x:auto}
+.pipeline pre{color:var(--muted);font-size:.82rem;line-height:1.8;font-family:'SF Mono','Fira Code',monospace;white-space:pre;overflow-x:auto}
+.pipeline .hl{color:var(--accent);font-weight:600}
+.pipeline .hl2{color:var(--accent3);font-weight:600}
+
+/* === COMPARISON === */
+.comparison{margin-top:48px;overflow-x:auto}
+.comparison table{width:100%;border-collapse:collapse;min-width:600px}
+.comparison th,.comparison td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem}
+.comparison th{color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+.comparison td:last-child{color:var(--accent3);font-weight:600}
+.comparison tr:hover td{background:rgba(129,140,248,.03)}
+
+/* === PRICING === */
+.pricing-card{max-width:560px;margin:48px auto 0;background:linear-gradient(135deg,rgba(129,140,248,.08),rgba(167,139,250,.05));border:1px solid rgba(129,140,248,.2);border-radius:24px;padding:48px;text-align:center;position:relative;overflow:hidden}
+.pricing-card::before{content:"";position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(129,140,248,.1),transparent 60%);pointer-events:none}
+.pricing-card .price{font-size:3.5rem;font-weight:900;letter-spacing:-.04em;margin:16px 0 8px}
+.pricing-card .price .currency{font-size:1.5rem;vertical-align:super;color:var(--muted);font-weight:600}
+.pricing-card .price-note{color:var(--dim);font-size:.85rem;margin-bottom:28px}
+.pricing-card ul{text-align:left;list-style:none;margin:24px 0;padding:0}
+.pricing-card li{padding:10px 0;color:var(--muted);font-size:.9rem;display:flex;align-items:flex-start;gap:12px}
+.pricing-card li::before{content:"✓";color:var(--accent3);font-weight:700;flex-shrink:0;margin-top:1px}
+.pricing-card .btn-primary{display:inline-block;margin-top:24px;width:100%;text-align:center}
+
+/* === AUDIENCE === */
+.audience{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:48px}
+.audience-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:border-color .3s}
+.audience-item:hover{border-color:var(--accent)}
+.audience-item .emoji{font-size:2rem;margin-bottom:12px}
+.audience-item h4{font-size:.95rem;font-weight:700;margin-bottom:6px}
+.audience-item p{color:var(--muted);font-size:.8rem}
+
+/* === FAQ === */
+.faq{margin-top:48px}
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-weight:700;font-size:1rem;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px}
+.faq-q::before{content:"Q";background:var(--accent);color:#000;width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0}
+.faq-a{color:var(--muted);font-size:.9rem;line-height:1.7;padding-left:36px}
+
+/* === FOOTER === */
+.footer{text-align:center;padding:60px 32px 40px;color:var(--dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:80px}
+.footer-brand{font-size:1rem;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-slogan{color:var(--muted);font-size:.85rem;margin-bottom:16px}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .nav-links a:not(.nav-cta){display:none}
+  .hero h1{font-size:2.2rem}
+  .pipeline{padding:24px}
+  .pipeline pre{font-size:.7rem}
+  .pricing-card{padding:32px 24px}
+}
+
+/* === LANG TOGGLE === */
+.lang-toggle{position:fixed;bottom:24px;right:24px;z-index:200;background:var(--surface);border:1px solid var(--border-light);border-radius:12px;padding:4px;display:flex;gap:2px;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.lang-btn{padding:8px 16px;border-radius:8px;border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:.8rem;font-weight:600;transition:all .2s}
+.lang-btn.active{background:var(--accent);color:#000}
+[data-lang="cn"]{display:none}
+body.cn [data-lang="cn"]{display:revert}
+body.cn [data-lang="en"]{display:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="nav-inner">
+  <div class="nav-brand">MagicBrush Engine</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#pipeline">Pipeline</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="#pricing" class="nav-cta">Get License →</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span data-lang="en">v2.0 — Production Ready</span><span data-lang="cn">v2.0 — 生产就绪</span></div>
+  <h1>
+    <span class="grad">MagicBrush</span> Engine<br/>
+    <span style="font-size:.5em;color:var(--dim);font-weight:600">神笔马良引擎 · 精品漫剧中台</span>
+  </h1>
+  <p class="hero-sub" data-lang="en">18 AI Agents orchestrate your entire drama production.<br/>One sentence in, full drama out.</p>
+  <p class="hero-sub" data-lang="cn">18 个 AI Agent 协同工作，全流程自动化漫剧制作。<br/>一句话开机，一部片落地。</p>
+  <div class="hero-ctas">
+    <a href="#pricing" class="btn-primary" data-lang="en">Get License — $1,888</a>
+    <a href="#pricing" class="btn-primary" data-lang="cn">立即获取 — $1,888</a>
+    <a href="#pipeline" class="btn-secondary" data-lang="en">See How It Works</a>
+    <a href="#pipeline" class="btn-secondary" data-lang="cn">了解工作原理</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">18</div><div class="stat-label" data-lang="en">AI Agents</div><div class="stat-label" data-lang="cn">AI Agent</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label" data-lang="en">Video Models</div><div class="stat-label" data-lang="cn">动镜模型</div></div>
+    <div class="stat"><div class="stat-num">30</div><div class="stat-label" data-lang="en">Episodes Tested</div><div class="stat-label" data-lang="cn">集实战验证</div></div>
+    <div class="stat"><div class="stat-num">~$4</div><div class="stat-label" data-lang="en">Per Episode Cost</div><div class="stat-label" data-lang="cn">每集制作成本</div></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-label" data-lang="en">Features</div>
+  <div class="section-label" data-lang="cn">核心功能</div>
+  <h2 class="section-title" data-lang="en">Everything you need to produce<br/>AI-animated dramas at scale.</h2>
+  <h2 class="section-title" data-lang="cn">规模化 AI 漫剧制作<br/>所需的一切。</h2>
+  <div class="features">
+
+    <div class="feature">
+      <div class="feature-icon fi-purple">🤖</div>
+      <h3 data-lang="en">18 AI Agents</h3><h3 data-lang="cn">18 个 AI Agent</h3>
+      <p data-lang="en">Every production step — from outline to export — has a dedicated agent. No gaps, no manual handoffs.</p>
+      <p data-lang="cn">从大纲到导出，每一步都有专属 Agent。无缝衔接，无需手动操作。</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon fi-green">🎬</div>
+      <h3 data-lang="en">8 Video Models</h3><h3 data-lang="cn">8 种动镜模型</h3>
+      <p data-lang="en">Doubao, Kling, Seedance, Wan, Sora2, Heluos and more. Auto-routing picks the best model per shot.</p>
+      <p data-lang="cn">豆包、可灵、即梦、Wan、Sora2、海螺等。智能路由自动选择最佳模型。</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon fi-rose">🔥</div>
+      <h3 data-lang="en">Battle-Tested</h3><h3 data-lang="cn">30 集实战验证</h3>
+      <p data-lang="en">Built from a real 30-episode production. 7 production scripts hardened and integrated back into the engine.</p>
+      <p data-lang="cn">基于 30 集商业项目实战打磨。7 个生产脚本千锤百炼后归位引擎。</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon fi-amber">💰</div>
+      <h3 data-lang="en">Auto Cost Tracking</h3><h3 data-lang="cn">每集成本自动核算</h3>
+      <p data-lang="en">Detailed cost breakdown per episode: portraits, frames, TTS, motion, composition — every credit accounted for.</p>
+      <p data-lang="cn">立绘、静帧、配音、动镜、合成 — 每一分钱花在哪里都清清楚楚。</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon fi-teal">🧠</div>
+      <h3 data-lang="en">Gemini AI Review</h3><h3 data-lang="cn">Gemini AI 审片</h3>
+      <p data-lang="en">6-dimension video review + script review with rewrite suggestions. P0/P1/P2 priority tagging.</p>
+      <p data-lang="cn">六维度视频审片 + 剧本审阅 + 改写建议。P0/P1/P2 优先级标注。</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon fi-blue">⚡</div>
+      <h3 data-lang="en">One-Sentence Dispatch</h3><h3 data-lang="cn">一句话调度</h3>
+      <p data-lang="en">"Turn this novel into a 30-ep drama" — the dispatcher orchestrates all 18 agents automatically.</p>
+      <p data-lang="cn">"把这部网文改编成 30 集漫剧" — 调度器自动编排 18 个 Agent 协同工作。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section class="section" id="pipeline">
+  <div class="section-label" data-lang="en">Pipeline</div>
+  <div class="section-label" data-lang="cn">制作流程</div>
+  <h2 class="section-title" data-lang="en">From idea to finished drama<br/>in 9 automated steps.</h2>
+  <h2 class="section-title" data-lang="cn">从创意到成片<br/>9 步全自动完成。</h2>
+  <p class="section-desc" data-lang="en">Say one sentence. The dispatcher chains all 18 agents. Each step outputs structured artifacts for the next.</p>
+  <p class="section-desc" data-lang="cn">说一句话，调度器串联 18 个 Agent。每一步输出结构化产物，驱动下一步。</p>
+  <div class="pipeline">
+<pre>
+<span class="hl">YOU:</span>  "Create an ancient Chinese fantasy drama about a magic paintbrush"
+       │
+<span class="hl">L0</span>    ├── <span class="hl2">Init</span>           → style.yaml + config.yaml + Dashboard
+       │
+<span class="hl">L1</span>    ├── <span class="hl2">Outline</span>        → Story synopsis + Episode plan + Characters
+       ├── <span class="hl2">Script</span>         → Per-episode script (4-act structure)
+       ├── <span class="hl2">QA Review</span>      → P0/P1/P2 quality gates + AI de-taste
+       │
+<span class="hl">L2</span>    ├── <span class="hl2">Assets</span>         → Character portraits + Scene cards + Prop cards
+       │
+<span class="hl">L3</span>    ├── <span class="hl2">Storyboard</span>     → 12-18 shots + Director's 3-frame method
+       ├── <span class="hl2">Voice Acting</span>   → Voice Bible + Multi-character TTS
+       ├── <span class="hl2">Motion Video</span>   → AI animation (8 models, auto-routing)
+       ├── <span class="hl2">Composition</span>    → Audio-driven editing + Final render
+       │
+<span class="hl">L4</span>    └── <span class="hl2">Publishing</span>     → Cover + Subtitles + Multi-platform export
+       │
+<span class="hl">OUT:</span>  Episode ready for Douyin / Bilibili / TikTok / YouTube ✓
+</pre>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section">
+  <div class="section-label" data-lang="en">Comparison</div>
+  <div class="section-label" data-lang="cn">对比</div>
+  <h2 class="section-title" data-lang="en">Not another AI toy.<br/>A production engine.</h2>
+  <h2 class="section-title" data-lang="cn">不是玩具。<br/>是生产引擎。</h2>
+  <div class="comparison">
+    <table>
+      <tr><th></th><th data-lang="en">Traditional</th><th data-lang="cn">传统方式</th><th data-lang="en">Other AI Tools</th><th data-lang="cn">其他 AI 工具</th><th>MagicBrush</th></tr>
+      <tr><td data-lang="en">Workflow</td><td data-lang="cn">工作流</td><td data-lang="en">Manual, fragmented</td><td data-lang="cn">手动、碎片化</td><td data-lang="en">Partial automation</td><td data-lang="cn">部分自动化</td><td>Full pipeline, 18 agents</td></tr>
+      <tr><td data-lang="en">Script → Video</td><td data-lang="cn">剧本→视频</td><td data-lang="en">Days to weeks</td><td data-lang="cn">数天至数周</td><td data-lang="en">Hours, manual</td><td data-lang="cn">数小时，需手动</td><td>Minutes, automated</td></tr>
+      <tr><td data-lang="en">Video Models</td><td data-lang="cn">视频模型</td><td>N/A</td><td>1-2</td><td>8 models, auto-routing</td></tr>
+      <tr><td data-lang="en">Cost Tracking</td><td data-lang="cn">成本追踪</td><td data-lang="en">Guesswork</td><td data-lang="cn">拍脑袋</td><td data-lang="en">None</td><td data-lang="cn">无</td><td>Auto report per episode</td></tr>
+      <tr><td data-lang="en">AI Review</td><td data-lang="cn">AI 审片</td><td data-lang="en">None</td><td data-lang="cn">无</td><td data-lang="en">None</td><td data-lang="cn">无</td><td>Gemini 6-dim review</td></tr>
+      <tr><td data-lang="en">Scalability</td><td data-lang="cn">可扩展性</td><td data-lang="en">Linear</td><td data-lang="cn">线性</td><td data-lang="en">Limited</td><td data-lang="cn">有限</td><td>Batch mode, 60+ episodes</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="section">
+  <div class="section-label" data-lang="en">Who It's For</div>
+  <div class="section-label" data-lang="cn">适用人群</div>
+  <h2 class="section-title" data-lang="en">Built for creators who<br/>mean business.</h2>
+  <h2 class="section-title" data-lang="cn">为认真做内容的<br/>创作者打造。</h2>
+  <div class="audience">
+    <div class="audience-item"><div class="emoji">🎨</div><h4 data-lang="en">Solo Creators</h4><h4 data-lang="cn">独立创作者</h4><p data-lang="en">Produce dramas solo</p><p data-lang="cn">一个人做一部剧</p></div>
+    <div class="audience-item"><div class="emoji">🏢</div><h4 data-lang="en">Studios</h4><h4 data-lang="cn">内容工作室</h4><p data-lang="en">Scale with batch mode</p><p data-lang="cn">批量模式规模化</p></div>
+    <div class="audience-item"><div class="emoji">💼</div><h4 data-lang="en">Agencies</h4><h4 data-lang="cn">接单团队</h4><p data-lang="en">White-label for clients</p><p data-lang="cn">白牌交付客户</p></div>
+    <div class="audience-item"><div class="emoji">🎓</div><h4 data-lang="en">Educators</h4><h4 data-lang="cn">培训讲师</h4><p data-lang="en">Structured curriculum</p><p data-lang="cn">体系化教学</p></div>
+    <div class="audience-item"><div class="emoji">💻</div><h4 data-lang="en">Developers</h4><h4 data-lang="cn">开发者</h4><p data-lang="en">Extend & customize</p><p data-lang="cn">二次开发扩展</p></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-label" data-lang="en">Pricing</div>
+  <div class="section-label" data-lang="cn">定价</div>
+  <h2 class="section-title" data-lang="en">One engine. One price.<br/>Unlimited dramas.</h2>
+  <h2 class="section-title" data-lang="cn">一套引擎。一次付费。<br/>无限创作。</h2>
+  <div class="pricing-card">
+    <div style="font-weight:700;font-size:1.1rem;letter-spacing:-.01em" data-lang="en">MagicBrush Engine v2.0</div>
+    <div style="font-weight:700;font-size:1.1rem;letter-spacing:-.01em" data-lang="cn">神笔马良引擎 v2.0</div>
+    <div class="price"><span class="currency">$</span>1,888</div>
+    <div class="price-note" data-lang="en">One-time purchase · Lifetime access to v2.x</div>
+    <div class="price-note" data-lang="cn">一次性购买 · v2.x 版本终身更新</div>
+    <ul>
+      <li data-lang="en">Full engine source — 18 AI Agents + production scripts + templates</li>
+      <li data-lang="cn">完整引擎源码 — 18 个 AI Agent + 生产脚本 + 模板</li>
+      <li data-lang="en">Sample project with complete production artifacts</li>
+      <li data-lang="cn">示范项目（含完整制作产物）</li>
+      <li data-lang="en">Interactive dashboard + AI chatbot assistant</li>
+      <li data-lang="cn">交互式控制台 + AI 助手机器人</li>
+      <li data-lang="en">8 video model prompt templates (Kling, Seedance, Wan, Sora2...)</li>
+      <li data-lang="cn">8 种动镜模型提示词模板（可灵、即梦、Wan、Sora2…）</li>
+      <li data-lang="en">Batch production mode — produce 60+ episodes</li>
+      <li data-lang="cn">批量生产模式 — 支持 60+ 集量产</li>
+      <li data-lang="en">Gemini AI review — 6-dimension video + script review</li>
+      <li data-lang="cn">Gemini AI 审片 — 六维度视频 + 剧本审阅</li>
+      <li data-lang="en">Auto cost tracking — per-episode breakdown</li>
+      <li data-lang="cn">自动成本追踪 — 逐集明细</li>
+      <li data-lang="en">Commercial license — single seat</li>
+      <li data-lang="cn">商业授权 — 单人席位</li>
+    </ul>
+    <a href="https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=Purchase%20License&body=I%20would%20like%20to%20purchase%20MagicBrush%20Engine%20v2.0." class="btn-primary" data-lang="en">Purchase License →</a>
+    <a href="https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=购买授权&body=我想购买神笔马良引擎%20v2.0。" class="btn-primary" data-lang="cn">立即购买 →</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label">FAQ</div>
+  <h2 class="section-title" data-lang="en">Frequently Asked Questions</h2>
+  <h2 class="section-title" data-lang="cn">常见问题</h2>
+  <div class="faq">
+    <div class="faq-item"><div class="faq-q" data-lang="en">Do I need coding skills?</div><div class="faq-q" data-lang="cn">需要编程基础吗？</div><div class="faq-a" data-lang="en">No. You interact with the engine using natural language in Cursor IDE. The built-in bot guides you step by step.</div><div class="faq-a" data-lang="cn">不需要。在 Cursor 里用自然语言对话即可，内置机器人会引导你每一步操作。</div></div>
+    <div class="faq-item"><div class="faq-q" data-lang="en">What AI services do I need?</div><div class="faq-q" data-lang="cn">需要哪些 AI 服务？</div><div class="faq-a" data-lang="en">The engine routes to multiple AI models (Jimeng, Seedream, Minimax, Kling, etc.) via API credits. Typical cost is $3-5 per episode.</div><div class="faq-a" data-lang="cn">引擎通过 API 积分调用多种 AI 模型（即梦、Seedream、Minimax、可灵等）。典型成本每集 $3-5。</div></div>
+    <div class="faq-item"><div class="faq-q" data-lang="en">Is this a subscription?</div><div class="faq-q" data-lang="cn">这是订阅制吗？</div><div class="faq-a" data-lang="en">No. One-time purchase. You own the engine, run it locally, modify it freely. v2.x updates included.</div><div class="faq-a" data-lang="cn">不是。一次购买永久使用。引擎在本地运行，可自由修改扩展。包含 v2.x 免费更新。</div></div>
+    <div class="faq-item"><div class="faq-q" data-lang="en">Can I use it commercially?</div><div class="faq-q" data-lang="cn">可以商用吗？</div><div class="faq-a" data-lang="en">Yes. Single-seat commercial license included. Contact us for team/enterprise licensing.</div><div class="faq-a" data-lang="cn">可以。包含单人商业授权。团队/企业授权请联系咨询。</div></div>
+    <div class="faq-item"><div class="faq-q" data-lang="en">What are the requirements?</div><div class="faq-q" data-lang="cn">有什么系统要求？</div><div class="faq-a" data-lang="en">Cursor IDE (latest), Cursor Pro subscription, and API credits for AI generation services.</div><div class="faq-a" data-lang="cn">Cursor IDE（最新版）、Cursor Pro 订阅、AI 模型 API 积分。</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">MagicBrush Engine · 神笔马良引擎</div>
+  <div class="footer-slogan">"One sentence in, full drama out."</div>
+  <p>© 2025-2026 MagicBrush Studio. All rights reserved.</p>
+</footer>
+
+<!-- LANG TOGGLE -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('cn')">中文</button>
+</div>
+
+<script>
+function setLang(lang){
+  document.body.classList.toggle('cn', lang==='cn');
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim()===(lang==='cn'?'中文':'EN'));
+  });
+  localStorage.setItem('mb-lang', lang);
+}
+// Auto-detect
+(function(){
+  const saved = localStorage.getItem('mb-lang');
+  if(saved){ setLang(saved); return; }
+  const nav = navigator.language || '';
+  if(/^zh/i.test(nav)) setLang('cn');
+})();
+</script>
+</body>
+</html>
