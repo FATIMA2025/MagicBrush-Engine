@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>神笔马良引擎 · AI漫剧全流程制作课 | ¥3,998 马年特惠</title>
+<meta name="description" content="18个AI Agent协同，一句话到成片。马年开年特惠¥3,998，含价值¥13,888神笔马良引擎v2.0。"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#DC2626;--red-dark:#991B1B;--red-glow:rgba(220,38,38,.15);
+  --gold:#D4A017;--gold-light:#F5D060;--gold-pale:#FDE68A;--gold-glow:rgba(212,160,23,.1);
+  --bg:#0F0506;--bg2:#1A0A0A;--bg3:#261212;--card:#1E0E0E;
+  --text:#FAFAFA;--muted:#D4B896;--dim:#8B7355;
+  --border:rgba(212,160,23,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+a{color:var(--gold-light);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+
+/* === NAV === */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);background:rgba(15,5,6,.85);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-weight:800;font-size:1rem;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:var(--muted);font-size:.85rem;font-weight:500;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff!important;padding:8px 20px;border-radius:8px;font-weight:700;font-size:.85rem;transition:all .2s;text-decoration:none!important}
+.nav-cta:hover{opacity:.9;transform:translateY(-1px);text-decoration:none!important}
+
+/* === HERO === */
+.hero{padding:120px 32px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 10%,rgba(220,38,38,.2),transparent 60%),radial-gradient(ellipse 50% 40% at 80% 30%,rgba(212,160,23,.1),transparent 50%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#1A0A0A;padding:6px 20px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:24px;position:relative;z-index:1}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.15;letter-spacing:-.02em;position:relative;z-index:1}
+.hero h1 .gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);margin-top:16px;position:relative;z-index:1}
+.hero-price{margin-top:32px;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.hero-price .old{color:var(--dim);font-size:1.1rem;text-decoration:line-through}
+.hero-price .new{font-size:3rem;font-weight:900;color:var(--gold-light);text-shadow:0 2px 20px rgba(212,160,23,.4)}
+.hero-price .new .yen{font-size:1.5rem;vertical-align:super}
+.hero-price .tag{background:var(--red);color:#fff;padding:6px 16px;border-radius:8px;font-size:.85rem;font-weight:700}
+.hero-ctas{display:flex;gap:12px;justify-content:center;margin-top:32px;position:relative;z-index:1;flex-wrap:wrap}
+.btn-red{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;padding:14px 36px;border-radius:12px;font-weight:700;font-size:1rem;text-decoration:none!important;transition:all .3s;box-shadow:0 4px 20px rgba(220,38,38,.3)}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(220,38,38,.4);text-decoration:none!important}
+.btn-ghost{background:transparent;color:var(--gold-light);padding:14px 36px;border-radius:12px;font-weight:600;font-size:1rem;border:1px solid rgba(212,160,23,.3);text-decoration:none!important;transition:all .3s}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(212,160,23,.05);text-decoration:none!important}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);max-width:700px;margin:48px auto 0;border-radius:16px;overflow:hidden;position:relative;z-index:1}
+.hstat{background:var(--bg2);padding:24px 16px;text-align:center}
+.hstat-num{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hstat-label{font-size:.75rem;color:var(--muted);margin-top:4px}
+
+/* === SECTIONS === */
+.sec{padding:80px 0}
+.sec-inner{max-width:1100px;margin:0 auto;padding:0 32px}
+.sec-tag{display:inline-block;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;padding:4px 14px;border-radius:6px;font-size:.75rem;font-weight:700;letter-spacing:.05em;margin-bottom:12px}
+.sec-title{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;line-height:1.3;margin-bottom:16px}
+.sec-title .hl{color:var(--gold-light)}
+.sec-desc{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.7}
+
+/* === PAIN === */
+.pain{background:var(--bg2)}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:32px}
+.pain-card{background:var(--card);border:1px solid rgba(220,38,38,.15);border-radius:16px;padding:24px;transition:all .3s}
+.pain-card:hover{border-color:var(--red);transform:translateY(-2px)}
+.pain-card .icon{font-size:2rem;margin-bottom:12px}
+.pain-card h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+.pain-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+/* === COURSE MODULES === */
+.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:32px}
+.mod{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative;overflow:hidden;transition:all .3s}
+.mod:hover{border-color:var(--gold);transform:translateY(-2px)}
+.mod::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--gold),var(--red))}
+.mod .num{font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.1em;margin-bottom:8px}
+.mod h4{font-size:1rem;font-weight:700;margin-bottom:8px}
+.mod p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+/* === PIPELINE === */
+.pipeline-wrap{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;margin-top:32px;overflow-x:auto}
+.pipeline-wrap pre{color:var(--muted);font-size:.8rem;line-height:1.8;font-family:'SF Mono','Fira Code',monospace;white-space:pre;overflow-x:auto}
+.pipeline-wrap .hl{color:var(--gold);font-weight:600}
+.pipeline-wrap .hl2{color:var(--red);font-weight:600}
+
+/* === GIFT === */
+.gift{background:linear-gradient(180deg,var(--bg) 0%,#1E0D08 50%,var(--bg) 100%)}
+.gift-card{background:linear-gradient(135deg,rgba(212,160,23,.08),rgba(220,38,38,.05));border:2px solid rgba(212,160,23,.25);border-radius:24px;padding:48px 40px;margin-top:32px;display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.gift-left{flex:1;min-width:280px}
+.gift-left .badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#1A0A0A;padding:6px 20px;border-radius:999px;font-size:.85rem;font-weight:800;margin-bottom:16px}
+.gift-left h3{font-size:1.8rem;font-weight:800;margin-bottom:8px}
+.gift-left .val{font-size:2.5rem;font-weight:900;color:var(--gold-light);text-shadow:0 2px 12px rgba(212,160,23,.3)}
+.gift-left .val .small{font-size:1rem;color:var(--muted)}
+.gift-right{flex:1;min-width:280px}
+.gift-feat{display:flex;align-items:center;gap:12px;padding:10px 0;font-size:.9rem;color:var(--muted);border-bottom:1px solid rgba(212,160,23,.08)}
+.gift-feat:last-child{border-bottom:none}
+.gift-feat::before{content:"✓";color:var(--gold-light);font-weight:800;font-size:1rem;flex-shrink:0}
+
+/* === AUDIENCE === */
+.aud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:32px}
+.aud-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;transition:all .3s}
+.aud-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.aud-card .emoji{font-size:2.5rem;margin-bottom:12px}
+.aud-card h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.aud-card p{font-size:.8rem;color:var(--muted)}
+
+/* === CTA === */
+.cta{background:linear-gradient(180deg,var(--bg2) 0%,#2D0808 50%,var(--bg) 100%);text-align:center;padding:80px 32px}
+.cta-timer{display:inline-flex;align-items:center;gap:8px;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:999px;padding:8px 24px;font-size:.85rem;font-weight:600;color:var(--gold-light);margin-bottom:24px}
+.cta-timer .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.5s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.cta h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:800;margin-bottom:8px}
+.cta .price-big{font-size:clamp(3rem,6vw,4.5rem);font-weight:900;color:var(--gold-light);text-shadow:0 4px 24px rgba(212,160,23,.4);margin:8px 0}
+.cta .price-big .yen{font-size:2rem;vertical-align:super}
+.cta .price-note{color:var(--dim);font-size:.95rem;margin-bottom:32px}
+.qr-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.qr-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,160,23,.2);border-radius:16px;padding:20px;text-align:center;width:240px}
+.qr-card img{width:200px;height:200px;object-fit:contain;border-radius:8px;background:#fff;padding:6px;margin:0 auto}
+.qr-card .qlabel{margin-top:10px;font-size:.85rem;color:var(--muted);font-weight:500}
+.cta-steps{margin-top:28px;font-size:.95rem;color:var(--muted);line-height:2}
+.cta-steps strong{color:var(--gold-light)}
+
+/* === FAQ === */
+.faq{background:var(--bg2)}
+.faq-list{max-width:700px;margin:32px auto 0}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-q{font-weight:700;font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.faq-q::before{content:"Q";background:var(--red);color:#fff;width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0}
+.faq-a{color:var(--muted);font-size:.9rem;line-height:1.7;padding-left:34px}
+
+/* === FOOTER === */
+.footer{text-align:center;padding:48px 32px;border-top:1px solid var(--border)}
+.footer-brand{font-size:1.1rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.footer-wish{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.footer-copy{font-size:.75rem;color:var(--dim)}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .nav-links a:not(.nav-cta){display:none}
+  .gift-card{padding:32px 24px;flex-direction:column;gap:24px}
+  .pipeline-wrap{padding:20px}
+  .pipeline-wrap pre{font-size:.65rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="nav-inner">
+  <div class="nav-brand">🐴 神笔马良引擎</div>
+  <div class="nav-links">
+    <a href="#course">课程</a>
+    <a href="#engine">引擎</a>
+    <a href="#pipeline">流程</a>
+    <a href="#faq">FAQ</a>
+    <a href="#buy" class="nav-cta">¥3,998 马上报名</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🐴 2026 马年开年特惠</div>
+  <h1><span class="gold">神笔马良引擎</span><br/>AI 漫剧全流程制作课</h1>
+  <p class="hero-sub">18 个 AI Agent 协同工作，一句话开机，一部片落地<br/>马到成功，让 AI 帮你拍出一部剧</p>
+  <div class="hero-price">
+    <span class="old">原价 ¥9,800</span>
+    <span class="new"><span class="yen">¥</span>3,998</span>
+    <span class="tag">含价值 ¥13,888 引擎</span>
+  </div>
+  <div class="hero-ctas">
+    <a href="#buy" class="btn-red">🐴 马上报名</a>
+    <a href="#pipeline" class="btn-ghost">了解详情 ↓</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">18</div><div class="hstat-label">AI Agent</div></div>
+    <div class="hstat"><div class="hstat-num">8</div><div class="hstat-label">动镜模型</div></div>
+    <div class="hstat"><div class="hstat-num">30</div><div class="hstat-label">集实战验证</div></div>
+    <div class="hstat"><div class="hstat-num">~¥25</div><div class="hstat-label">每集成本</div></div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="sec pain">
+<div class="sec-inner">
+  <span class="sec-tag">痛点</span>
+  <h2 class="sec-title">想做 AI 漫剧，却被这些问题<span class="hl">卡住了</span></h2>
+  <div class="pain-grid">
+    <div class="pain-card"><div class="icon">💸</div><h4>制作成本太高</h4><p>请团队动辄几万，AI 工具不知道怎么选、怎么配合，钱花了效果还不行</p></div>
+    <div class="pain-card"><div class="icon">🧩</div><h4>流程碎片化</h4><p>写剧本一个工具，画图一个，配音又一个…东拼西凑效率极低，版本混乱</p></div>
+    <div class="pain-card"><div class="icon">🤯</div><h4>AI 工具学不会</h4><p>模型太多参数太复杂，提示词写不好，角色不一致，出图全靠运气</p></div>
+    <div class="pain-card"><div class="icon">📉</div><h4>成片质量差</h4><p>画面跳帧、角色变脸、动作僵硬、音画不同步，发出来没人看</p></div>
+  </div>
+</div>
+</section>
+
+<!-- COURSE -->
+<section class="sec" id="course">
+<div class="sec-inner">
+  <span class="sec-tag">课程体系</span>
+  <h2 class="sec-title">7 大模块，从 0 到 1 掌握<span class="hl">AI 漫剧全流程</span></h2>
+  <p class="sec-desc">不是教你用某个工具，而是给你一整套可复制的生产体系。学完即可接单、量产、交付。</p>
+  <div class="modules">
+    <div class="mod"><div class="num">模块一</div><h4>🎯 项目启动 & 风格锚定</h4><p>一句话建项目，自动生成控制台。style.yaml 风格体系让全剧视觉统一，不再东拼西凑</p></div>
+    <div class="mod"><div class="num">模块二</div><h4>📝 剧本工程化</h4><p>大纲→分集剧本→三级质检→AI去味。四段式结构 + SMART 场戏模型，写出能拍的剧本</p></div>
+    <div class="mod"><div class="num">模块三</div><h4>🎨 风格资产体系</h4><p>角色立绘、场景卡、道具卡一键生成。三行结构+不可变特征，锁定角色一致性</p></div>
+    <div class="mod"><div class="num">模块四</div><h4>🎬 分镜 & 静帧</h4><p>导演三帧法（起/爆/钩），12-18 镜头自动切分。即梦/Seedream 双模型出图</p></div>
+    <div class="mod"><div class="num">模块五</div><h4>🎙️ 配音 & 声线设计</h4><p>Voice Bible 建档，Minimax TTS 多角色配音。语气词、停顿、情感精细控制</p></div>
+    <div class="mod"><div class="num">模块六</div><h4>🎥 AI 动镜 & 合成</h4><p>8 种模型智能路由（可灵/即梦/Wan/Sora2），音频驱动合成，一键出片</p></div>
+    <div class="mod"><div class="num">模块七</div><h4>🚀 发布 & 变现</h4><p>封面海报、字幕打轴、多平台导出。抖音/B站/小红书/TikTok 一键适配</p></div>
+  </div>
+</div>
+</section>
+
+<!-- PIPELINE -->
+<section class="sec" id="pipeline" style="background:var(--bg2)">
+<div class="sec-inner">
+  <span class="sec-tag">全流程</span>
+  <h2 class="sec-title">一句话到成片，<span class="hl">9 步全自动</span></h2>
+  <p class="sec-desc">说一句话，调度器串联 18 个 Agent。每一步输出结构化产物，驱动下一步。</p>
+  <div class="pipeline-wrap">
+<pre>
+<span class="hl">你说：</span>"把这部网文改编成 30 集古风漫剧"
+       │
+<span class="hl2">L0</span>    ├── <span class="hl">初始化</span>        → style.yaml + config.yaml + 控制台
+<span class="hl2">L1</span>    ├── <span class="hl">大纲</span>          → 故事梗概 + 分集大纲 + 人物设定
+       ├── <span class="hl">剧本</span>          → 单集剧本（四段式结构）
+       ├── <span class="hl">质检</span>          → P0/P1/P2 质检 + AI 去味
+<span class="hl2">L2</span>    ├── <span class="hl">资产</span>          → 角色立绘 + 场景卡 + 道具卡
+<span class="hl2">L3</span>    ├── <span class="hl">分镜</span>          → 12-18 镜头 + 导演三帧法
+       ├── <span class="hl">配音</span>          → Voice Bible + 多角色 TTS
+       ├── <span class="hl">动镜</span>          → 8 种 AI 模型智能路由
+       ├── <span class="hl">合成</span>          → 音频驱动编辑 + 成片输出
+<span class="hl2">L4</span>    └── <span class="hl">发布</span>          → 封面 + 字幕 + 多平台导出
+
+<span class="hl2">横向支撑：</span>调度中枢 · 质检引擎 · 模型路由 · 成本追踪 · AI审片
+</pre>
+  </div>
+</div>
+</section>
+
+<!-- ENGINE GIFT -->
+<section class="sec" id="engine">
+<div class="sec-inner">
+  <span class="sec-tag">超值赠品</span>
+  <h2 class="sec-title">报名即送<span class="hl">价值 ¥13,888</span> 神笔马良引擎</h2>
+  <div class="gift-card">
+    <div class="gift-left">
+      <div class="badge">🎁 限量赠品</div>
+      <h3>神笔马良引擎 v2.0</h3>
+      <div class="val"><span class="small">价值</span> ¥13,888</div>
+    </div>
+    <div class="gift-right">
+      <div class="gift-feat">18 个 AI Agent 完整源码 + 脚本 + 模板</div>
+      <div class="gift-feat">8 种动镜模型提示词模板（可灵/即梦/Wan/Sora2…）</div>
+      <div class="gift-feat">30 集商业项目实战验证，拿来即用</div>
+      <div class="gift-feat">Gemini AI 六维度审片 + 剧本审阅</div>
+      <div class="gift-feat">每集成本自动追踪，制作不再黑箱</div>
+      <div class="gift-feat">一句话调度 + 批量 60 集量产</div>
+      <div class="gift-feat">项目控制台 + AI 助手机器人</div>
+      <div class="gift-feat">v2.x 版本终身免费更新</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="sec" style="background:var(--bg2)">
+<div class="sec-inner">
+  <span class="sec-tag">适合谁学</span>
+  <h2 class="sec-title">这门课<span class="hl">适合你吗？</span></h2>
+  <div class="aud-grid">
+    <div class="aud-card"><div class="emoji">🎨</div><h4>独立创作者</h4><p>一个人做一部剧</p></div>
+    <div class="aud-card"><div class="emoji">🏢</div><h4>内容工作室</h4><p>批量模式规模化</p></div>
+    <div class="aud-card"><div class="emoji">💼</div><h4>接单变现</h4><p>学完即可接单交付</p></div>
+    <div class="aud-card"><div class="emoji">🎓</div><h4>培训讲师</h4><p>体系化教学素材</p></div>
+    <div class="aud-card"><div class="emoji">💻</div><h4>技术开发者</h4><p>二次开发扩展</p></div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="buy">
+  <div class="cta-timer"><span class="pulse"></span>🐴 马年开年特惠 · 限时优惠中</div>
+  <h2>马到成功，一句话出片</h2>
+  <div class="price-big"><span class="yen">¥</span>3,998</div>
+  <div class="price-note"><s>原价 ¥9,800</s> · 含价值 ¥13,888 神笔马良引擎</div>
+  <div class="qr-row">
+    <div class="qr-card">
+      <img src="../images/wechat.png" alt="微信支付"/>
+      <div class="qlabel">微信支付</div>
+    </div>
+    <div class="qr-card">
+      <img src="../images/alipay.png" alt="支付宝"/>
+      <div class="qlabel">支付宝</div>
+    </div>
+  </div>
+  <div class="cta-steps">
+    <strong>第一步：</strong>扫码付款 ¥3,998<br/>
+    <strong>第二步：</strong>添加微信 <strong>金台夕照</strong><br/>
+    <strong>第三步：</strong>发送付款截图<br/>
+    <strong>第四步：</strong>领取课程 + 引擎下载链接
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" id="faq">
+<div class="sec-inner">
+  <span class="sec-tag">FAQ</span>
+  <h2 class="sec-title">常见问题</h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q">需要编程基础吗？</div><div class="faq-a">不需要。在 Cursor 里用自然语言对话即可，AI 机器人会引导你每一步操作。零基础也能上手。</div></div>
+    <div class="faq-item"><div class="faq-q">课程包含什么？</div><div class="faq-a">7 大模块系统课程 + 神笔马良引擎 v2.0 完整源码 + 示范项目 + 持续更新。</div></div>
+    <div class="faq-item"><div class="faq-q">AI 生成费用大概多少？</div><div class="faq-a">引擎支持多模型路由，典型成本每集约 ¥25（立绘+静帧+配音+动镜+合成）。30 集总计约 ¥750。</div></div>
+    <div class="faq-item"><div class="faq-q">可以商用吗？</div><div class="faq-a">可以。报名即获商业授权，可用于个人创作、接单交付、培训教学。</div></div>
+    <div class="faq-item"><div class="faq-q">学完能接单吗？</div><div class="faq-a">完全可以。引擎支持白牌交付，学完即可为客户制作 AI 漫剧，目前市场报价 5000-30000 元/集。</div></div>
+    <div class="faq-item"><div class="faq-q">有售后服务吗？</div><div class="faq-a">有。加入专属学员社群，问题随时交流。引擎 v2.x 版本免费更新。</div></div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">神笔马良引擎 · MagicBrush Engine</div>
+  <div class="footer-wish">🐴 马年大吉 · 马到成功 · 一马当先</div>
+  <div class="footer-copy">© 2026 MagicBrush Studio. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
