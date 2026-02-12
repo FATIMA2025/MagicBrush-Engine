@@ -249,12 +249,26 @@ MagicBrush-Engine-v2.0/
 - v2.x 版本免费更新
 
 <p align="center">
-  <a href="https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=Purchase%20License&body=I%20would%20like%20to%20purchase%20MagicBrush%20Engine%20v2.0."><img src="https://img.shields.io/badge/💰_Purchase_License-$1,888-e11d48?style=for-the-badge&labelColor=111" alt="Purchase"/></a>
+  <a href="https://fatima2025.github.io/MagicBrush-Engine/#pricing"><img src="https://img.shields.io/badge/💰_Purchase_License-$1,888-e11d48?style=for-the-badge&labelColor=111" alt="Purchase"/></a>
 </p>
 
-> **Purchase:** Contact via [GitHub Issues](https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=Purchase%20License&body=I%20would%20like%20to%20purchase%20MagicBrush%20Engine%20v2.0.) or email for payment link.
->
-> **购买方式：** 通过 [GitHub Issues](https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=购买授权&body=我想购买神笔马良引擎%20v2.0。) 或邮件联系获取付款链接。
+### How to Purchase · 如何购买
+
+<p align="center">
+  <strong>WeChat Pay · 微信支付</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Alipay · 支付宝</strong>
+</p>
+
+<p align="center">
+  <img src="images/wechat.png" alt="WeChat Pay" width="180"/>&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="images/alipay.png" alt="Alipay" width="180"/>
+</p>
+
+<p align="center">
+  <em>Scan to pay → Add WeChat <strong>金台夕照</strong> → Send payment screenshot → Receive download link</em><br/>
+  <em>扫码付款 → 添加微信 <strong>金台夕照</strong> → 发送付款截图 → 获取下载链接</em>
+</p>
+
+> **International buyers:** Contact via [GitHub Issues](https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=Purchase%20License&body=I%20would%20like%20to%20purchase%20MagicBrush%20Engine%20v2.0.) for alternative payment methods.
 
 ---
 

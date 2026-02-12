@@ -120,6 +120,17 @@ a:hover{text-decoration:underline}
 .footer-brand{font-size:1rem;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .footer-slogan{color:var(--muted);font-size:.85rem;margin-bottom:16px}
 
+/* === PAYMENT QR === */
+.pay-section{margin-top:32px;padding-top:28px;border-top:1px solid var(--border)}
+.pay-title{font-size:1rem;font-weight:700;text-align:center;margin-bottom:20px;color:var(--text)}
+.pay-qr-row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.pay-qr-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;text-align:center;width:200px;transition:border-color .3s}
+.pay-qr-card:hover{border-color:var(--accent)}
+.pay-qr-img{width:168px;height:168px;object-fit:contain;border-radius:8px;background:#fff;padding:4px}
+.pay-qr-label{margin-top:10px;font-size:.8rem;color:var(--muted);font-weight:500}
+.pay-note{text-align:center;margin-top:20px;font-size:.85rem;color:var(--dim);line-height:1.6;max-width:400px;margin-left:auto;margin-right:auto}
+.pay-note strong{color:var(--accent);font-weight:700}
+
 /* === RESPONSIVE === */
 @media(max-width:768px){
   .stats{grid-template-columns:repeat(2,1fr)}
@@ -327,8 +338,27 @@ body.cn [data-lang="en"]{display:none}
       <li data-lang="en">Commercial license — single seat</li>
       <li data-lang="cn">商业授权 — 单人席位</li>
     </ul>
-    <a href="https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=Purchase%20License&body=I%20would%20like%20to%20purchase%20MagicBrush%20Engine%20v2.0." class="btn-primary" data-lang="en">Purchase License →</a>
-    <a href="https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=购买授权&body=我想购买神笔马良引擎%20v2.0。" class="btn-primary" data-lang="cn">立即购买 →</a>
+    <!-- PAYMENT QR CODES -->
+    <div class="pay-section">
+      <div class="pay-title" data-lang="en">Scan to Pay</div>
+      <div class="pay-title" data-lang="cn">扫码付款</div>
+      <div class="pay-qr-row">
+        <div class="pay-qr-card">
+          <img src="images/wechat.png" alt="WeChat Pay" class="pay-qr-img"/>
+          <div class="pay-qr-label">WeChat Pay · 微信支付</div>
+        </div>
+        <div class="pay-qr-card">
+          <img src="images/alipay.png" alt="Alipay" class="pay-qr-img"/>
+          <div class="pay-qr-label">Alipay · 支付宝</div>
+        </div>
+      </div>
+      <div class="pay-note" data-lang="en">After payment, add WeChat <strong>金台夕照</strong> and send your payment screenshot to receive the download link.</div>
+      <div class="pay-note" data-lang="cn">付款后添加微信 <strong>金台夕照</strong>，发送付款截图即可获取引擎下载链接。</div>
+    </div>
+    <div style="margin-top:20px;text-align:center">
+      <a href="https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=Purchase%20License&body=I%20would%20like%20to%20purchase%20MagicBrush%20Engine%20v2.0." class="btn-secondary" data-lang="en" style="display:inline-block;font-size:.85rem;padding:10px 24px">Or contact via GitHub →</a>
+      <a href="https://github.com/FATIMA2025/MagicBrush-Engine/issues/new?title=购买授权&body=我想购买神笔马良引擎%20v2.0。" class="btn-secondary" data-lang="cn" style="display:inline-block;font-size:.85rem;padding:10px 24px">也可通过 GitHub 联系 →</a>
+    </div>
   </div>
 </section>
 
