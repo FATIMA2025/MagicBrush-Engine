@@ -259,8 +259,8 @@ MagicBrush-Engine-v2.0/
 </p>
 
 <p align="center">
-  <img src="images/wechat.png" alt="WeChat Pay" width="180"/>&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="images/alipay.png" alt="Alipay" width="180"/>
+  <img src="images/wechat.png" alt="WeChat Pay" width="280"/>&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="images/alipay.png" alt="Alipay" width="280"/>
 </p>
 
 <p align="center">
