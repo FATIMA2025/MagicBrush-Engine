@@ -241,25 +241,7 @@ MagicBrush-Engine-v2.0/
    - **Open a [GitHub Discussion](https://github.com/FATIMA2025/MagicBrush-Engine/discussions)** or **[GitHub Issue](https://github.com/FATIMA2025/MagicBrush-Engine/issues)** and tell us your **GitHub username** and that you've completed payment.
 3. We will **add you as a collaborator** to a **private repository** where the full engine (source code, templates, sample project) is hosted. You can then **clone or download** from that private repo.
 
-**先付费 → 联系我 → 拉你进私密仓库下载。**
 
-1. **完成付款**（微信/支付宝等，见下方「如何购买」）。
-2. **联系我**并提供付款凭证：
-   - **给我留言**（如通过你付款时使用的渠道），或  
-   - 在 **[GitHub Discussion](https://github.com/FATIMA2025/MagicBrush-Engine/discussions)** 或 **[GitHub Issue](https://github.com/FATIMA2025/MagicBrush-Engine/issues)** 中说明你已付款，并留下你的 **GitHub 用户名**。
-3. 我会将你 **加入私密仓库** 为协作者，你即可在该仓库中 **克隆或下载** 完整引擎（源码、模板、示范项目）。
-
-
-
-**购买包含：**
-- 完整引擎源码（18 个 AI Agent + 脚本 + 模板）
-- 示范项目（含完整制作产物）
-- 控制台 + AI 助手机器人
-- 8 种动镜模型提示词模板
-- 批量生产模式
-- Gemini AI 审片集成
-- 自动成本追踪系统
-- v2.x 版本免费更新
 
 <p align="center">
   <a href="https://fatima2025.github.io/MagicBrush-Engine/#pricing"><img src="https://img.shields.io/badge/💰_Purchase_License-$1,888-e11d48?style=for-the-badge&labelColor=111" alt="Purchase"/></a>
