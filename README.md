@@ -249,15 +249,7 @@ MagicBrush-Engine-v2.0/
    - 在 **[GitHub Discussion](https://github.com/FATIMA2025/MagicBrush-Engine/discussions)** 或 **[GitHub Issue](https://github.com/FATIMA2025/MagicBrush-Engine/issues)** 中说明你已付款，并留下你的 **GitHub 用户名**。
 3. 我会将你 **加入私密仓库** 为协作者，你即可在该仓库中 **克隆或下载** 完整引擎（源码、模板、示范项目）。
 
----
-- Full engine source (18 AI Agents + scripts + templates)
-- Sample project with complete production artifacts
-- Dashboard + AI chatbot assistant
-- 8 video model prompt templates
-- Batch production mode
-- Gemini AI review integration
-- Auto cost tracking system
-- Free updates for v2.x
+
 
 **购买包含：**
 - 完整引擎源码（18 个 AI Agent + 脚本 + 模板）
