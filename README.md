@@ -229,6 +229,27 @@ MagicBrush-Engine-v2.0/
 ### MagicBrush Engine v2.0 — $1,888
 
 **What you get:**
+---
+
+## 📥 How to Get Access · 获取方式
+
+**Pay first → Contact us → We add you to a private repo for download.**
+
+1. **Complete payment** (WeChat Pay / Alipay / other — see [How to Purchase](#-get-started--立即获取) below).
+2. **Contact us** with your payment confirmation:
+   - **Leave a message** (e.g. via the contact channel you used when paying), or  
+   - **Open a [GitHub Discussion](https://github.com/FATIMA2025/MagicBrush-Engine/discussions)** or **[GitHub Issue](https://github.com/FATIMA2025/MagicBrush-Engine/issues)** and tell us your **GitHub username** and that you've completed payment.
+3. We will **add you as a collaborator** to a **private repository** where the full engine (source code, templates, sample project) is hosted. You can then **clone or download** from that private repo.
+
+**先付费 → 联系我 → 拉你进私密仓库下载。**
+
+1. **完成付款**（微信/支付宝等，见下方「如何购买」）。
+2. **联系我**并提供付款凭证：
+   - **给我留言**（如通过你付款时使用的渠道），或  
+   - 在 **[GitHub Discussion](https://github.com/FATIMA2025/MagicBrush-Engine/discussions)** 或 **[GitHub Issue](https://github.com/FATIMA2025/MagicBrush-Engine/issues)** 中说明你已付款，并留下你的 **GitHub 用户名**。
+3. 我会将你 **加入私密仓库** 为协作者，你即可在该仓库中 **克隆或下载** 完整引擎（源码、模板、示范项目）。
+
+---
 - Full engine source (18 AI Agents + scripts + templates)
 - Sample project with complete production artifacts
 - Dashboard + AI chatbot assistant
